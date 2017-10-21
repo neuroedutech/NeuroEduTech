@@ -2,6 +2,120 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="~/Content/balloon.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    jQuery(function ($) {
+
+        $("#dv1,#dv2,#dv3,#dv4").hide();
+
+        $("#btnCriar").click(function () {
+
+            var nrpergunta = 1;
+            //if (pnrpergunta > 0) {
+            //    nrpergunta = pnrpergunta
+            //}
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Perguntas/BuscarPerguntas",
+                data:
+                    {
+                        nrpergunta: nrpergunta
+                    },
+                error: function (dados) {
+                    $("#msg").html(dados);
+                },
+                success: function (dados) {
+                    //$("#msgSuccess").html(dados);
+                    console.log(dados);
+
+                    $("#pergunta").html(dados[0].txDescricao);
+                    $("#resposta1").html(dados[1].txDescricao);
+                    $("#resposta2").html(dados[2].txDescricao);
+                    $("#resposta3").html(dados[3].txDescricao);
+                    $("#resposta4").html(dados[4].txDescricao);
+                    $("#dv1,#dv2,#dv3,#dv4").show();
+
+                }
+            })
+        })
+
+        $("#enviarRespostas").click(function () {
+
+            var resposta1 = $("#resposta1").val();
+            var resposta2 = $("#resposta2").val();
+            var resposta3 = $("#resposta3").val();
+            var resposta4 = $("#resposta4").val();
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Perguntas/EnviarRespostas",
+                data:
+                    {
+                        nrpergunta: nrpergunta
+                    },
+                error: function (dados) {
+                    $("#msg").html(dados);
+                },
+                success: function (dados) {
+                    //$("#msgSuccess").html(dados);
+                    console.log(dados);
+
+                    $("#pergunta").html(dados[0].txDescricao);
+                    $("#resposta1").html(dados[1].txDescricao);
+                    $("#resposta2").html(dados[2].txDescricao);
+                    $("#resposta3").html(dados[3].txDescricao);
+                    $("#resposta4").html(dados[4].txDescricao);
+                    $("#dv1,#dv2,#dv3,#dv4").show();
+
+                }
+            })
+        })
+
+
+
+    });
+</script>
+
+<div class="jumbotron">
+    <h1>Neuro Edu Tech!</h1>
+    <p class="lead">Teste seus conhecimentos</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Vamos Começar!!!!!</h2>
+        <p>
+            Responda as Perguntas para testar seus conhecimentos e habilidades:
+            <input type="button" value="Começar" class="btnPrincipal" id="btnCriar" />&nbsp;&nbsp;
+
+        </p>
+    </div>
+    <div class="col-md-8">
+        <h2>Responda</h2>
+        <h4 id="pergunta"></h4>
+        <p id="resposta1"></p> <div id="dv1"><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />+ou- <input type="radio" id="ni1" name="p1" value="3" />Ni</div>
+        <p id="resposta2"></p> <div id="dv2"><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />+ou- <input type="radio" id="ni2" name="p2" value="3" />Ni</div>
+        <p id="resposta3"></p> <div id="dv3"><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />+ou- <input type="radio" id="ni3" name="p3" value="3" />Ni</div>
+        <p id="resposta4"></p> <div id="dv4"><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />+ou- <input type="radio" id="ni4" name="p4" value="3" />Ni <input type="button" value="Enviar" id="enviarRespostas" /></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+@*@{
+    ViewBag.Title = "Home Page";
+}
+
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
@@ -28,4 +142,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
