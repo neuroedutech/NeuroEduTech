@@ -7,8 +7,6 @@
 <script>
     jQuery(function ($) {
 
-        $("#dv1,#dv2,#dv3,#dv4").hide();
-
         $("#btnCriar").click(function () {
 
             var nrpergunta = 1;
@@ -97,10 +95,10 @@
     <div class="col-md-8">
         <h2>Responda</h2>
         <h4 id="pergunta"></h4>
-        <p id="resposta1"></p> <div id="dv1"><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />+ou- <input type="radio" id="ni1" name="p1" value="3" />Ni</div>
-        <p id="resposta2"></p> <div id="dv2"><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />+ou- <input type="radio" id="ni2" name="p2" value="3" />Ni</div>
-        <p id="resposta3"></p> <div id="dv3"><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />+ou- <input type="radio" id="ni3" name="p3" value="3" />Ni</div>
-        <p id="resposta4"></p> <div id="dv4"><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />+ou- <input type="radio" id="ni4" name="p4" value="3" />Ni <input type="button" value="Enviar" id="enviarRespostas" /></div>
+        <p id="resposta1"></p> <div id="dv1" hidden><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />+ou- <input type="radio" id="ni1" name="p1" value="3" />Ni</div>
+        <p id="resposta2"></p> <div id="dv2" hidden><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />+ou- <input type="radio" id="ni2" name="p2" value="3" />Ni</div>
+        <p id="resposta3"></p> <div id="dv3" hidden><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />+ou- <input type="radio" id="ni3" name="p3" value="3" />Ni</div>
+        <p id="resposta4"></p> <div id="dv4" hidden><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />+ou- <input type="radio" id="ni4" name="p4" value="3" />Ni <input type="button" value="Enviar" id="enviarRespostas" /></div>
     </div>
 
 </div>
