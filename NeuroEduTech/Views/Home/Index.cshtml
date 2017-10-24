@@ -34,7 +34,7 @@
                     $("#resposta2").html(dados[2].txDescricao);
                     $("#resposta3").html(dados[3].txDescricao);
                     $("#resposta4").html(dados[4].txDescricao);
-                    $("#dv1,#dv2,#dv3,#dv4").show();
+                    $("#dvResp1,#dvResp2,#dvResp3,#dvResp4").show();
 
                 }
             })
@@ -67,7 +67,7 @@
                     $("#resposta2").html(dados[2].txDescricao);
                     $("#resposta3").html(dados[3].txDescricao);
                     $("#resposta4").html(dados[4].txDescricao);
-                    $("#dv1,#dv2,#dv3,#dv4").show();
+                    $("#dvResp1,#dvResp2,#dvResp3,#dvResp4").show();
 
                 }
             })
@@ -95,10 +95,62 @@
     <div class="col-md-8">
         <h2>Responda</h2>
         <h4 id="pergunta"></h4>
-        <p id="resposta1"></p> <div id="dv1" hidden><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />+ou- <input type="radio" id="ni1" name="p1" value="3" />Ni</div>
-        <p id="resposta2"></p> <div id="dv2" hidden><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />+ou- <input type="radio" id="ni2" name="p2" value="3" />Ni</div>
-        <p id="resposta3"></p> <div id="dv3" hidden><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />+ou- <input type="radio" id="ni3" name="p3" value="3" />Ni</div>
-        <p id="resposta4"></p> <div id="dv4" hidden><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />+ou- <input type="radio" id="ni4" name="p4" value="3" />Ni <input type="button" value="Enviar" id="enviarRespostas" /></div>
+        <p id="resposta1"></p>
+        <div id="dvResp1" hidden>
+            <input type="radio" id="certo1" name="resp1" value="1" onclick="$('#dv1').show(); $('#dvBranco1').hide()" />Certo
+            <input type="radio" id="errado1" name="resp1" value="2" onclick="$('#dv1').show(); $('#dvBranco1').hide()" />Errado
+            <input type="radio" id="branco1" name="resp1" value="3" onclick="$('#dv1').hide(); $('#dvBranco1').show()" />Branco
+        </div>
+        <div id="dv1" hidden><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />Pouca Dúvida <input type="radio" id="ni1" name="p1" value="3" />Mediana Dúvida</div>
+        <div id="dvBranco1" hidden>
+            <input type="radio" id="b11" name="p11" value="1" />Muito Difícil 
+            <input type="radio" id="b12" name="p11" value="2" />Estudou mas n Absorveu 
+            <input type="radio" id="b13" name="p11" value="4" />Nao Conhece
+            <input type="radio" id="b14" name="p11" value="5" />Ambiguo
+            <input type="radio" id="b15" name="p11" value="6" />Não deu tempo de Resolver
+        </div>
+        <p id="resposta2"></p> 
+        <div id="dvResp2" hidden>
+            <input type="radio" id="certo2" name="resp2" value="1" onclick="$('#dv2').show(); $('#dvBranco2').hide()" />Certo
+            <input type="radio" id="errado2" name="resp2" value="2" onclick="$('#dv2').show(); $('#dvBranco2').hide()" />Errado
+            <input type="radio" id="branco1" name="resp2" value="3" onclick="$('#dv2').hide(); $('#dvBranco2').show()" />Branco
+        </div>
+        <div id="dv2" hidden><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />Pouca Dúvida <input type="radio" id="ni2" name="p2" value="3" />Mediana Dúvida</div>
+        <div id="dvBranco2" hidden>
+            <input type="radio" id="b21" name="p21" value="1" />Muito Difícil
+            <input type="radio" id="b22" name="p21" value="2" />Estudou mas n Absorveu
+            <input type="radio" id="b23" name="p21" value="4" />Nao Conhece
+            <input type="radio" id="b24" name="p21" value="5" />Ambiguo
+            <input type="radio" id="b25" name="p21" value="6" />Não deu tempo de Resolver
+        </div>
+        <p id="resposta3"></p> 
+        <div id="dvResp3" hidden>
+            <input type="radio" id="certo3" name="resp3" value="1" onclick="$('#dv3').show(); $('#dvBranco3').hide()" />Certo
+            <input type="radio" id="errado3" name="resp3" value="2" onclick="$('#dv3').show(); $('#dvBranco3').hide()" />Errado
+            <input type="radio" id="branco1" name="resp3" value="3" onclick="$('#dv3').hide(); $('#dvBranco3').show()" />Branco
+        </div>
+        <div id="dv3" hidden><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />Pouca Dúvida <input type="radio" id="ni3" name="p3" value="3" />Mediana Dúvida</div>
+        <div id="dvBranco3" hidden>
+            <input type="radio" id="b31" name="p31" value="1" />Muito Difícil
+            <input type="radio" id="b32" name="p31" value="2" />Estudou mas n Absorveu
+            <input type="radio" id="b33" name="p31" value="4" />Nao Conhece
+            <input type="radio" id="b34" name="p31" value="5" />Ambiguo
+            <input type="radio" id="b35" name="p31" value="6" />Não deu tempo de Resolver
+        </div>
+        <p id="resposta4"></p> 
+        <div id="dvResp4" hidden>
+            <input type="radio" id="certo4" name="resp4" value="1" onclick="$('#dv4').show(); $('#dvBranco4').hide()" />Certo
+            <input type="radio" id="errado4" name="resp4" value="2" onclick="$('#dv4').show(); $('#dvBranco4').hide()" />Errado
+            <input type="radio" id="branco1" name="resp4" value="3" onclick="$('#dv4').hide(); $('#dvBranco4').show()" />Branco
+        </div>
+        <div id="dv4" hidden><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />Pouca Dúvida <input type="radio" id="ni4" name="p4" value="3" />Mediana Dúvida <input type="button" value="Enviar" id="enviarRespostas" /></div>
+        <div id="dvBranco4" hidden>
+            <input type="radio" id="b41" name="p41" value="1" />Muito Difícil
+            <input type="radio" id="b42" name="p41" value="2" />Estudou mas n Absorveu
+            <input type="radio" id="b43" name="p41" value="4" />Nao Conhece
+            <input type="radio" id="b44" name="p41" value="5" />Ambiguo
+            <input type="radio" id="b45" name="p41" value="6" />Não deu tempo de Resolver
+        </div>
     </div>
 
 </div>
