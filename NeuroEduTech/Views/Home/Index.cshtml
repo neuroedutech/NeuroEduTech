@@ -91,9 +91,9 @@
         <h4 id="pergunta"></h4>
         <p id="resposta1"></p>
         <div id="dvResp1" hidden>
-            <input type="radio" id="certo1" name="resp1" value="1" onclick="$('#dv1').show(); $('#dvBranco1').hide()" />Certo
-            <input type="radio" id="errado1" name="resp1" value="2" onclick="$('#dv1').show(); $('#dvBranco1').hide()" />Errado
-            <input type="radio" id="branco1" name="resp1" value="3" onclick="$('#dv1').hide(); $('#dvBranco1').show()" />Branco
+            <input type="radio" id="certo1" name="resp1" value="1" onclick="$('#dv1').show(); $('#dvBranco1').hide(); $('input:radio[name=p11]').attr('checked', false)" />Certo
+            <input type="radio" id="errado1" name="resp1" value="2" onclick="$('#dv1').show(); $('#dvBranco1').hide(); $('input:radio[name=p11]').attr('checked', false)" />Errado
+            <input type="radio" id="branco1" name="resp1" value="3" onclick="$('#dv1').hide(); $('#dvBranco1').show(); $('input:radio[name=p1]').attr('checked', false)" />Branco
             <div id="dv1" hidden><input type="radio" id="ctz1" name="p1" value="1" />CTZ <input type="radio" id="mom1" name="p1" value="2" />Pouca Dúvida <input type="radio" id="ni1" name="p1" value="3" />Mediana Dúvida</div>
             <div id="dvBranco1" hidden>
                 <input type="radio" id="b11" name="p11" value="1" />Muito Difícil
@@ -105,9 +105,9 @@
         </div>
         <p id="resposta2"></p> 
         <div id="dvResp2" hidden>
-            <input type="radio" id="certo2" name="resp2" value="1" onclick="$('#dv2').show(); $('#dvBranco2').hide()" />Certo
-            <input type="radio" id="errado2" name="resp2" value="2" onclick="$('#dv2').show(); $('#dvBranco2').hide()" />Errado
-            <input type="radio" id="branco1" name="resp2" value="3" onclick="$('#dv2').hide(); $('#dvBranco2').show()" />Branco
+            <input type="radio" id="certo2" name="resp2" value="1" onclick="$('#dv2').show(); $('#dvBranco2').hide(); $('input:radio[name=p21]').attr('checked', false)" />Certo
+            <input type="radio" id="errado2" name="resp2" value="2" onclick="$('#dv2').show(); $('#dvBranco2').hide(); $('input:radio[name=p21]').attr('checked', false)" />Errado
+            <input type="radio" id="branco1" name="resp2" value="3" onclick="$('#dv2').hide(); $('#dvBranco2').show(); $('input:radio[name=p2]').attr('checked', false)" />Branco
             <div id="dv2" hidden><input type="radio" id="ctz2" name="p2" value="1" />CTZ <input type="radio" id="mom2" name="p2" value="2" />Pouca Dúvida <input type="radio" id="ni2" name="p2" value="3" />Mediana Dúvida</div>
             <div id="dvBranco2" hidden>
                 <input type="radio" id="b21" name="p21" value="1" />Muito Difícil
@@ -119,9 +119,9 @@
         </div>
         <p id="resposta3"></p> 
         <div id="dvResp3" hidden>
-            <input type="radio" id="certo3" name="resp3" value="1" onclick="$('#dv3').show(); $('#dvBranco3').hide()" />Certo
-            <input type="radio" id="errado3" name="resp3" value="2" onclick="$('#dv3').show(); $('#dvBranco3').hide()" />Errado
-            <input type="radio" id="branco1" name="resp3" value="3" onclick="$('#dv3').hide(); $('#dvBranco3').show()" />Branco
+            <input type="radio" id="certo3" name="resp3" value="1" onclick="$('#dv3').show(); $('#dvBranco3').hide(); $('input:radio[name=p31]').attr('checked', false)" />Certo
+            <input type="radio" id="errado3" name="resp3" value="2" onclick="$('#dv3').show(); $('#dvBranco3').hide(); $('input:radio[name=p31]').attr('checked', false)" />Errado
+            <input type="radio" id="branco1" name="resp3" value="3" onclick="$('#dv3').hide(); $('#dvBranco3').show(); $('input:radio[name=p3]').attr('checked', false)" />Branco
             <div id="dv3" hidden><input type="radio" id="ctz3" name="p3" value="1" />CTZ <input type="radio" id="mom3" name="p3" value="2" />Pouca Dúvida <input type="radio" id="ni3" name="p3" value="3" />Mediana Dúvida</div>
             <div id="dvBranco3" hidden>
                 <input type="radio" id="b31" name="p31" value="1" />Muito Difícil
