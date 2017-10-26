@@ -133,9 +133,9 @@
         </div>
         <p id="resposta4"></p> 
         <div id="dvResp4" hidden>
-            <input type="radio" id="certo4" name="resp4" value="1" onclick="$('#dv4').show(); $('#dvBranco4').hide()" />Certo
-            <input type="radio" id="errado4" name="resp4" value="2" onclick="$('#dv4').show(); $('#dvBranco4').hide()" />Errado
-            <input type="radio" id="branco1" name="resp4" value="3" onclick="$('#dv4').hide(); $('#dvBranco4').show()" />Branco
+            <input type="radio" id="certo4" name="resp4" value="1" onclick="$('#dv4').show(); $('#dvBranco4').hide(); $('input:radio[name=p41]').attr('checked', false)" />Certo
+            <input type="radio" id="errado4" name="resp4" value="2" onclick="$('#dv4').show(); $('#dvBranco4').hide(); $('input:radio[name=p41]').attr('checked', false)" />Errado
+            <input type="radio" id="branco1" name="resp4" value="3" onclick="$('#dv4').hide(); $('#dvBranco4').show(); $('input:radio[name=p4]').attr('checked', false)" />Branco
             <div id="dv4" hidden><input type="radio" id="ctz4" name="p4" value="1" />CTZ <input type="radio" id="mom4" name="p4" value="2" />Pouca Dúvida <input type="radio" id="ni4" name="p4" value="3" />Mediana Dúvida</div>
             <div id="dvBranco4" hidden>
                 <input type="radio" id="b41" name="p41" value="1" />Muito Difícil
