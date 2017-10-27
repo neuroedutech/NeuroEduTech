@@ -41,6 +41,9 @@ namespace NeuroEduTech.DAL
             return sqlCommand;
         }
 
+#region PERGUNTAS
+
+
         public static DataTable BuscarPerguntasDAL()
         {
 
@@ -72,6 +75,46 @@ namespace NeuroEduTech.DAL
             return returnStringOutput;
         }
 
+        #endregion
+
+        #region RESPOSTAS
+
+        public static string EnviarRespostasDAL(string[] lista, string[] listaCodRespostas)
+        {
+
+            int[] listaInt = Array.ConvertAll(lista, int.Parse);
+            int[] listaCodRespostasInt = Array.ConvertAll(listaCodRespostas, int.Parse);
+
+            SqlParameter outputmsg = InstanciaOutput();
+
+            string returnStringOutput;
+
+            SqlCommand sqlComando = ConexaoDBComParam("sp_c_respostas_crencas");
+
+            sqlComando.Parameters.Add(new SqlParameter("@codUsuario", 1));
+            sqlComando.Parameters.Add(new SqlParameter("@codResposta1", listaCodRespostasInt[0]));
+            sqlComando.Parameters.Add(new SqlParameter("@resposta1", listaInt[0]));
+            sqlComando.Parameters.Add(new SqlParameter("@crenca1", listaInt[1]));
+            sqlComando.Parameters.Add(new SqlParameter("@codResposta2", listaCodRespostasInt[1]));
+            sqlComando.Parameters.Add(new SqlParameter("@resposta2", listaInt[2]));
+            sqlComando.Parameters.Add(new SqlParameter("@crenca2", listaInt[3]));
+            sqlComando.Parameters.Add(new SqlParameter("@codResposta3", listaCodRespostasInt[2]));
+            sqlComando.Parameters.Add(new SqlParameter("@resposta3", listaInt[4]));
+            sqlComando.Parameters.Add(new SqlParameter("@crenca3", listaInt[5]));
+            sqlComando.Parameters.Add(new SqlParameter("@codResposta4", listaCodRespostasInt[3]));
+            sqlComando.Parameters.Add(new SqlParameter("@resposta4", listaInt[6]));
+            sqlComando.Parameters.Add(new SqlParameter("@crenca4", listaInt[7]));
+            sqlComando.Parameters.Add(outputmsg);
+
+            sqlComando.ExecuteNonQuery();
+
+            returnStringOutput = (string)sqlComando.Parameters["@outputmsg"].Value;
+
+            return returnStringOutput;
+
+        }
+
+        #endregion
 
         public static SqlParameter InstanciaOutput()
         {

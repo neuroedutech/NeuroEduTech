@@ -2,10 +2,11 @@
     ViewBag.Title = "Home Page";
 }
 
-<link href="~/Content/balloon.min.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
     jQuery(function ($) {
+
+        var idRespostas = [];
 
         $("#btnCriar").click(function () {
 
@@ -18,7 +19,15 @@
                 },
                 success: function (dados) {
                     //$("#msgSuccess").html(dados);
+
                     console.log(dados);
+
+                    idRespostas = [];
+
+                    for (var i = 1; i < dados.length; i++) {
+                        idRespostas.push(dados[i].idResposta);
+                    }
+                    console.log(idRespostas);
 
                     $("#pergunta").html(dados[0].txDescricao);
                     $("#resposta1").html(dados[1].txDescricao);
@@ -35,19 +44,20 @@
         $("#enviarRespostas").click(function () {
 
             var selected = [];
-            $('#dvResp1 input:checked').each(function () {
-                selected.push($(this).attr('id'));
+            $('#dvMaster input:checked').each(function () {
+                selected.push($(this).attr('value'));
             });
 
             console.log(selected);
-
+            console.log(idRespostas);
             $.ajax({
                 dataType: "json",
                 type: "POST",
                 url: "/Perguntas/EnviarRespostas",
                 data:
                     {
-                        //nrpergunta: nrpergunta
+                        lista: selected,
+                        listaCodRespostas: idRespostas
                     },
                 error: function (dados) {
                     $("#msg").html(dados);
@@ -86,7 +96,7 @@
 
         </p>
     </div>
-    <div class="col-md-8">
+    <div id="dvMaster" class="col-md-8">
         <h2>Responda</h2>
         <h4 id="pergunta"></h4>
         <p id="resposta1"></p>

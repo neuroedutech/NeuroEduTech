@@ -31,5 +31,14 @@ namespace NeuroEduTech.Controllers
             return resultado;
 
         }
+
+        public string EnviarRespostas(string[] lista, string[] listaCodRespostas)
+        {
+
+            string resultado = BaseDAL.EnviarRespostasDAL(lista, listaCodRespostas);
+            return resultado;
+
+        }
+
     }
 }
