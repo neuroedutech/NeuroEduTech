@@ -7,13 +7,17 @@
     jQuery(function ($) {
 
         var idRespostas = [];
+        var codPergunta = 1;
 
-        $("#btnCriar").click(function () {
+        criarPergunta = function(idPergunta) {
+    
+            codPergunta = idPergunta;
 
             $.ajax({
                 dataType: "json",
                 type: "POST",
                 url: "/Perguntas/BuscarPerguntas",
+                data: { idPergunta: idPergunta },
                 error: function (dados) {
                     $("#msg").html(dados);
                 },
@@ -39,7 +43,7 @@
 
                 }
             })
-        })
+        }
 
         $("#enviarRespostas").click(function () {
 
@@ -50,8 +54,9 @@
 
             console.log(selected);
             console.log(idRespostas);
+
             $.ajax({
-                dataType: "json",
+                dataType: "text",
                 type: "POST",
                 url: "/Perguntas/EnviarRespostas",
                 data:
@@ -59,19 +64,23 @@
                         lista: selected,
                         listaCodRespostas: idRespostas
                     },
-                error: function (dados) {
-                    $("#msg").html(dados);
-                },
                 success: function (dados) {
-                    //$("#msgSuccess").html(dados);
-                    console.log(dados);
 
-                    $("#pergunta").html(dados[0].txDescricao);
-                    $("#resposta1").html(dados[1].txDescricao);
-                    $("#resposta2").html(dados[2].txDescricao);
-                    $("#resposta3").html(dados[3].txDescricao);
-                    $("#resposta4").html(dados[4].txDescricao);
-                    $("#dvResp1,#dvResp2,#dvResp3,#dvResp4").show();
+                    //alert('sucesso');
+                    if (codPergunta > 2) {
+                        alert('Parabéns!!');
+                        window.location = "/Home/Index";
+                    } else {
+
+                        $('#dvMaster input:checked').each(function () {
+                            $(this).removeAttr('checked');
+                        });
+
+                        $('#dv1,#dvBranco1,#dv2,#dvBranco2,#dv3,#dvBranco3,#dv4,#dvBranco4').hide();
+
+                        codPergunta++;
+                        criarPergunta(codPergunta);
+                    }
 
                 }
             })
@@ -92,7 +101,7 @@
         <h2>Vamos Começar!!!!!</h2>
         <p>
             Responda as Perguntas para testar seus conhecimentos e habilidades:
-            <input type="button" value="Começar" class="btnPrincipal" id="btnCriar" />&nbsp;&nbsp;
+            <input type="button" value="Começar" class="btnPrincipal" id="btnCriar" onclick="criarPergunta(1);" />&nbsp;&nbsp;
 
         </p>
     </div>

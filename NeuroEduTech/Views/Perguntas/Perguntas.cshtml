@@ -7,7 +7,7 @@
 <script>
     jQuery(function ($) {
 
-        $("#btnCriaxr").click(function () {
+        $("#btnCriar").click(function () {
 
             var pergunta = $("#pergunta").val();
             var resposta1 = $("#resposta1").val();
@@ -34,7 +34,7 @@
                     $("#msgSuccess").html(dados);
                     //$("#msgSuccess").html(dados).addClass("alert alert-success");
                     setTimeout(function () {
-                        window.location = "/Perguntas/CriarPergunta";
+                        window.location = "/Perguntas/Perguntas";
                     }, 1100);
 
                 }

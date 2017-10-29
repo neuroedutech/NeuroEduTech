@@ -24,10 +24,11 @@ namespace NeuroEduTech.Controllers
 
         }
 
-        public string BuscarPerguntas()
+        public string BuscarPerguntas(string idPergunta)
         {
 
-            string resultado = BaseDAL.DataTable_JSON_JavaSerializer(BaseDAL.BuscarPerguntasDAL());
+            int idPerguntaInt = int.Parse(idPergunta);
+            string resultado = BaseDAL.DataTable_JSON_JavaSerializer(BaseDAL.BuscarPerguntasDAL(idPerguntaInt));
             return resultado;
 
         }

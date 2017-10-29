@@ -44,11 +44,16 @@ namespace NeuroEduTech.DAL
 #region PERGUNTAS
 
 
-        public static DataTable BuscarPerguntasDAL()
+        public static DataTable BuscarPerguntasDAL(int idPergunta)
         {
 
+            SqlCommand sqlComando = ConexaoDBComParam("sp_v_perguntas_e_respostas");
+            sqlComando.Parameters.Add(new SqlParameter("@idPergunta", idPergunta));
+            SqlDataAdapter dtaDataAdapter = new SqlDataAdapter(sqlComando);
+
             DataTable dt = new DataTable();
-            dt = ConexaoDB("sp_v_perguntas_e_respostas");
+            dtaDataAdapter.Fill(dt);
+
             return dt;
 
         }
