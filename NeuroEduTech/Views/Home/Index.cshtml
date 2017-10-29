@@ -55,38 +55,45 @@
             console.log(selected);
             console.log(idRespostas);
 
-            $.ajax({
-                dataType: "text",
-                type: "POST",
-                url: "/Perguntas/EnviarRespostas",
-                data:
-                    {
-                        lista: selected,
-                        listaCodRespostas: idRespostas
-                    },
-                success: function (dados) {
 
-                    //alert('sucesso');
-                    if (codPergunta > 2) {
-                        alert('Parabéns!!');
-                        window.location = "/Home/Index";
-                    } else {
+            var tamanhoArray = selected.length;
 
-                        $('#dvMaster input:checked').each(function () {
-                            $(this).removeAttr('checked');
-                        });
+            if (tamanhoArray < 8) {
+                alert('Vocë deve preencher todas as respostas e suas respectivas crenças');
+            } else { 
 
-                        $('#dv1,#dvBranco1,#dv2,#dvBranco2,#dv3,#dvBranco3,#dv4,#dvBranco4').hide();
 
-                        codPergunta++;
-                        criarPergunta(codPergunta);
+                $.ajax({
+                    dataType: "text",
+                    type: "POST",
+                    url: "/Perguntas/EnviarRespostas",
+                    data:
+                        {
+                            lista: selected,
+                            listaCodRespostas: idRespostas
+                        },
+                    success: function (dados) {
+
+                        //alert('sucesso');
+                        if (codPergunta > 2) {
+                            alert('Parabéns!!');
+                            window.location = "/Home/Index";
+                        } else {
+
+                            $('#dvMaster input:checked').each(function () {
+                                $(this).removeAttr('checked');
+                            });
+
+                            $('#dv1,#dvBranco1,#dv2,#dvBranco2,#dv3,#dvBranco3,#dv4,#dvBranco4').hide();
+
+                            codPergunta++;
+                            criarPergunta(codPergunta);
+                        }
+
                     }
-
-                }
-            })
+                })
+            }
         })
-
-
 
     });
 </script>
