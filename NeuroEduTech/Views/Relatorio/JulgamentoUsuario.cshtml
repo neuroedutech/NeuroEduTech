@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "JulgamentoUsuario";
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+
+    $(function () {
+
+        gerarRelatorioJulgamento = function () {
+          
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Relatorio/GerarRelatorioJulgamentoDoUsuario",
+                success: function (dados) {
+
+                    var len = dados.length;
+                    var txt = "";
+
+                    //limpar tabela pesquisa
+                    $("#tablePesquisa td").remove();
+
+                    if (len > 0) {
+                        txt = "";
+                        for (var i = 0; i < len; i++) {
+
+                            if (dados[i].nome) {
+
+                                txt += "<tr><td>" + dados[i].nome + "</td><td>" + jsondata(dados[i].data_da_venda) + "</td><td>";
+                            }
+                        }
+                        if (txt != "") {
+                            $("#tablePesquisa").append(txt);//.removeClass("hiddenPesquisa");
+                        }
+                    }
+
+                }
+
+            });
+
+        }
+    })
+</script>
+
+<h2>JulgamentoUsuario</h2>
+
+<table id="tableJulgamento"> @*class="hiddenPesquisa table table-hover table-responsive">*@
+    <tr>
+        <th>Questão</th>
+        <th>Assertiva</th>
+        <th>Tema</th>
+        <th>Sub Tema</th>
+        <th>Habilidade</th>
+        <th>Sua Resposta</th>
+        <th>Crença</th>
+        <th>Gabarito</th>
+        <th>Julgamento</th>
+    </tr>
+</table>

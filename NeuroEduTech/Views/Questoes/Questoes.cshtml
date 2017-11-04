@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Questoes";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    jQuery(function ($) {
+
+        $("#btnCriar").click(function () {
+
+            var questao = $("#questao").val();
+            var assertiva1 = $("#assertiva1").val();
+            var assertiva2 = $("#assertiva2").val();
+            var assertiva3 = $("#assertiva3").val();
+            var assertiva4 = $("#assertiva4").val();
+
+            $.ajax({
+                dataType: "text",
+                type: "POST",
+                url: "/Questoes/CriarQuestao",
+                data:
+                    {
+                        questao: questao,
+                        assertiva1: assertiva1,
+                        assertiva2: assertiva2,
+                        assertiva3: assertiva3,
+                        assertiva4: assertiva4
+                    },
+                error: function (dados) {
+                    $("#msg").html(dados);
+                },
+                success: function (dados) {
+                    $("#msgSuccess").html(dados);
+                    //$("#msgSuccess").html(dados).addClass("alert alert-success");
+                    setTimeout(function () {
+                        window.location = "/Questoes/Questoes";
+                    }, 1100);
+
+                }
+            })
+        })
+
+    });
+</script>
+
+<h2>Questões</h2>
+
+<div id="divCriar">
+
+    <h4>Questão:</h4>
+    <input type="text" id="questao" /><br />
+    <h4>Assertiva 1:</h4>
+    <input type="text" id="assertiva1" /><br />
+    <h4>Assertiva 2:</h4>
+    <input type="text" id="assertiva2" /><br />
+    <h4>Assertiva 3:</h4>
+    <input type="text" id="assertiva3" /><br />
+    <h4>Assertiva 4:</h4>
+    <input type="text" id="assertiva4" /><br />
+
+    <br />
+    <br />
+    <input type="button" value="Criar" class="btnPrincipal" id="btnCriar" />&nbsp;&nbsp;
+
+    <span style="color:red;font-weight:bold;font-size:19px" id="msg"></span>
+    <span style="color:#008000;font-weight:bold;font-size:19px" id="msgSuccess"></span>
+
+</div>

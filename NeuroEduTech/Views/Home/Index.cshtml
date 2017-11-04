@@ -7,17 +7,17 @@
     jQuery(function ($) {
 
         var idRespostas = [];
-        var codPergunta = 1;
+        var codQuestao = 1;
 
-        criarPergunta = function(idPergunta) {
+        criarQuestao = function (idQuestao) {
     
-            codPergunta = idPergunta;
+            codQuestao = idQuestao;
 
             $.ajax({
                 dataType: "json",
                 type: "POST",
-                url: "/Perguntas/BuscarPerguntas",
-                data: { idPergunta: idPergunta },
+                url: "/Questoes/BuscarQuestoes",
+                data: { idQuestao: idQuestao },
                 error: function (dados) {
                     $("#msg").html(dados);
                 },
@@ -33,7 +33,7 @@
                     }
                     console.log(idRespostas);
 
-                    $("#pergunta").html(dados[0].txDescricao);
+                    $("#questao").html(dados[0].txDescricao);
                     $("#resposta1").html(dados[1].txDescricao);
                     $("#resposta2").html(dados[2].txDescricao);
                     $("#resposta3").html(dados[3].txDescricao);
@@ -66,7 +66,7 @@
                 $.ajax({
                     dataType: "text",
                     type: "POST",
-                    url: "/Perguntas/EnviarRespostas",
+                    url: "/Questoes/EnviarRespostas",
                     data:
                         {
                             lista: selected,
@@ -75,7 +75,7 @@
                     success: function (dados) {
 
                         //alert('sucesso');
-                        if (codPergunta > 2) {
+                        if (codQuestao > 2) {
                             alert('Parabéns!!');
                             window.location = "/Home/Index";
                         } else {
@@ -86,8 +86,8 @@
 
                             $('#dv1,#dvBranco1,#dv2,#dvBranco2,#dv3,#dvBranco3,#dv4,#dvBranco4').hide();
 
-                            codPergunta++;
-                            criarPergunta(codPergunta);
+                            codQuestao++;
+                            criarQuestao(codQuestao);
                         }
 
                     }
@@ -107,14 +107,14 @@
     <div class="col-md-4">
         <h2>Vamos Começar!!!!!</h2>
         <p>
-            Responda as Perguntas para testar seus conhecimentos e habilidades:
-            <input type="button" value="Começar" class="btnPrincipal" id="btnCriar" onclick="criarPergunta(1);" />&nbsp;&nbsp;
+            Responda as assertivas para testar seus conhecimentos e habilidades:
+            <input type="button" value="Começar" class="btnPrincipal" id="btnCriar" onclick="criarQuestao(1);" />&nbsp;&nbsp;
 
         </p>
     </div>
     <div id="dvMaster" class="col-md-8">
         <h2>Responda</h2>
-        <h4 id="pergunta"></h4>
+        <h4 id="questao"></h4>
         <p id="resposta1"></p>
         <div id="dvResp1" hidden>
             <input type="radio" id="certo1" name="resp1" value="1" onclick="$('#dv1').show(); $('#dvBranco1').hide(); $('input:radio[name=p11]').attr('checked', false)" />Certo

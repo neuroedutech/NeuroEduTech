@@ -21,6 +21,7 @@ namespace NeuroEduTech.DAL
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandTimeout = 7200;
             SqlDataAdapter dtaDataAdapter = new SqlDataAdapter(sqlCommand);
+
             DataTable dt = new DataTable();
             dtaDataAdapter.Fill(dt);
 
@@ -41,14 +42,14 @@ namespace NeuroEduTech.DAL
             return sqlCommand;
         }
 
-#region PERGUNTAS
+        #region QUESTÕES
 
 
-        public static DataTable BuscarPerguntasDAL(int idPergunta)
+        public static DataTable BuscarQuestoesDAL(int idQuestao)
         {
 
-            SqlCommand sqlComando = ConexaoDBComParam("sp_v_perguntas_e_respostas");
-            sqlComando.Parameters.Add(new SqlParameter("@idPergunta", idPergunta));
+            SqlCommand sqlComando = ConexaoDBComParam("sp_v_questoes_e_assertivas");
+            sqlComando.Parameters.Add(new SqlParameter("@idQuestao", idQuestao));
             SqlDataAdapter dtaDataAdapter = new SqlDataAdapter(sqlComando);
 
             DataTable dt = new DataTable();
@@ -58,19 +59,19 @@ namespace NeuroEduTech.DAL
 
         }
 
-        public static string CriarPerguntaDAO(string pergunta, string resposta1, string resposta2, string resposta3, string resposta4)
+        public static string CriarQuestaoDAO(string questao, string assertiva1, string assertiva2, string assertiva3, string assertiva4)
         {
             SqlParameter outputmsg = InstanciaOutput();
 
             string returnStringOutput;
 
-            SqlCommand sqlComando = ConexaoDBComParam("sp_c_perguntas_e_respostas");
+            SqlCommand sqlComando = ConexaoDBComParam("sp_c_questoes_e_assertivas");
 
-            sqlComando.Parameters.Add(new SqlParameter("@pergunta", pergunta));
-            sqlComando.Parameters.Add(new SqlParameter("@resposta1", resposta1));
-            sqlComando.Parameters.Add(new SqlParameter("@resposta2", resposta2));
-            sqlComando.Parameters.Add(new SqlParameter("@resposta3", resposta3));
-            sqlComando.Parameters.Add(new SqlParameter("@resposta4", resposta4));
+            sqlComando.Parameters.Add(new SqlParameter("@questao", questao));
+            sqlComando.Parameters.Add(new SqlParameter("@assertiva1", assertiva1));
+            sqlComando.Parameters.Add(new SqlParameter("@assertiva2", assertiva2));
+            sqlComando.Parameters.Add(new SqlParameter("@assertiva3", assertiva3));
+            sqlComando.Parameters.Add(new SqlParameter("@assertiva4", assertiva4));
             sqlComando.Parameters.Add(outputmsg);
 
             sqlComando.ExecuteNonQuery();
@@ -118,6 +119,19 @@ namespace NeuroEduTech.DAL
             return returnStringOutput;
 
         }
+
+        #endregion
+
+        #region RELATÓRIO JULGAMENTO
+
+        public static DataTable GerarRelatorioJulgamentoDoUsuarioDAL(string procedureName)
+        {
+            DataTable dt = new DataTable();
+            dt = ConexaoDB("sp_v_gerarRelatorioJulgamentoDoUsuario");
+            return dt;
+        }
+
+
 
         #endregion
 
