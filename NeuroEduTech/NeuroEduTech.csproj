@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestoesController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -270,6 +271,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Questoes\Questoes.cshtml" />
     <Content Include="Views\Relatorio\JulgamentoUsuario.cshtml" />
+    <Content Include="Views\Home\Tutorial.cshtml" />
+    <Content Include="Views\Usuario\PerfilMetaCognitivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,16 +13,21 @@ namespace NeuroEduTech.Controllers
             return View();
         }
 
+        public ActionResult Tutorial()
+        {
+            return View("Tutorial");
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "NeuroEduTech";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "neuroedutech@gmail.com";
 
             return View();
         }
