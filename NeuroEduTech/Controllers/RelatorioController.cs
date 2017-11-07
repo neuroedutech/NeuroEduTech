@@ -10,9 +10,9 @@ namespace NeuroEduTech.Controllers
     public class RelatorioController : Controller
     {
         // GET: Relatorio
-        public ActionResult Index()
+        public ActionResult JulgamentoUsuario()
         {
-            return View();
+            return View("JulgamentoUsuario");
         }
 
         public string GerarRelatorioJulgamentoDoUsuario()

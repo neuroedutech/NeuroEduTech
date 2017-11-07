@@ -6,33 +6,37 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
 
-    $(function () {
+    jQuery(function ($) {
 
-        gerarRelatorioJulgamento = function () {
-          
             $.ajax({
                 dataType: "json",
                 type: "POST",
                 url: "/Relatorio/GerarRelatorioJulgamentoDoUsuario",
                 success: function (dados) {
 
+                    console.log(dados);
+                    console.log(dados[0].Questao);
                     var len = dados.length;
                     var txt = "";
 
                     //limpar tabela pesquisa
-                    $("#tablePesquisa td").remove();
+                    $("#tableJulgamento td").remove();
 
                     if (len > 0) {
                         txt = "";
                         for (var i = 0; i < len; i++) {
 
-                            if (dados[i].nome) {
+                            if (dados[i].Questao) {
 
-                                txt += "<tr><td>" + dados[i].nome + "</td><td>" + jsondata(dados[i].data_da_venda) + "</td><td>";
+                                txt += "<tr><td>" + dados[i].Questao + "</td><td>" + dados[i].Assertiva + "</td><td>"
+                                    + dados[i].Tema + "</td><td>" + dados[i].SubTema + "</td><td>" + dados[i].Habilidade
+                                    + "</td><td>" + dados[i].SuaResposta + "</td><td>" + dados[i].Crenca + "</td><td>"
+                                    + dados[i].Gabarito + "</td><td><input type='text' placeholder='Justificativa' /></td></tr>";
                             }
                         }
                         if (txt != "") {
-                            $("#tablePesquisa").append(txt);//.removeClass("hiddenPesquisa");
+                            $("#tableJulgamento").append(txt);//.removeClass("hiddenPesquisa");
+                            $("#tableJulgamento").show();
                         }
                     }
 
@@ -40,13 +44,12 @@
 
             });
 
-        }
-    })
+    });
 </script>
 
-<h2>JulgamentoUsuario</h2>
+<h2>Julgamento do Usuário</h2>
 
-<table id="tableJulgamento"> @*class="hiddenPesquisa table table-hover table-responsive">*@
+<table id="tableJulgamento" hidden class="hiddenPesquisa table table-hover table-responsive">
     <tr>
         <th>Questão</th>
         <th>Assertiva</th>

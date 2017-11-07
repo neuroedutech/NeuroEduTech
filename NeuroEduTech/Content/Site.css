@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+ table th{
+     background-color:#9370DB;
+     color:white;
+     font-size:14px;
+ }
+
+ table tr:hover th{
+    background-color:#9370DB !important;
+ }
+
+table tbody tr:hover td{
+    background-color:#E6E6FA !important;
+ }
