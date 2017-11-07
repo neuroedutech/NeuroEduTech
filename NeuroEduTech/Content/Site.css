@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-size:13.5px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,7 +28,7 @@ textarea {
  table th{
      background-color:#9370DB;
      color:white;
-     font-size:14px;
+     font-size:15px;
  }
 
  table tr:hover th{
